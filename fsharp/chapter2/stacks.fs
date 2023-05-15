@@ -31,9 +31,3 @@ module Chapter2.Stacks
             | Nil, _ -> failwith "Error"
             | Cons (x, xs), 0 -> Cons(y, xs)
             | Cons (x, xs), i -> Cons(x, update xs (i - 1) y) 
-        
-    module Oppg_2_1 = 
-        let rec suffix (lst: 'a list) = 
-            match lst with
-            | [] -> [[]]
-            | x :: xs -> lst :: suffix xs

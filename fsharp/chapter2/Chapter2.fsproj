@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Stacks.fs" />
+    <Compile Include="Trees.fs" />
+    <Compile Include="Exercise_2_1.fs" />
+    <Compile Include="Exercise_2_2.fs" />
+    <Compile Include="Exercise_2_3.fs" />
+    <Compile Include="Exercise_2_5.fs" />
+    <Compile Include="Exercise_2_6.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>
