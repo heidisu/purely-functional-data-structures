@@ -11,6 +11,7 @@
     <Compile Include="Exercise_2_1.fs" />
     <Compile Include="Exercise_2_2.fs" />
     <Compile Include="Exercise_2_3.fs" />
+    <Compile Include="Exercise_2_4.fs" />
     <Compile Include="Exercise_2_5.fs" />
     <Compile Include="Exercise_2_6.fs" />
     <Compile Include="Program.fs" />

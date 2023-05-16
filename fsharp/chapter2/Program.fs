@@ -27,6 +27,8 @@ let t2 = Tree.insert 'e' tree
 printfn "%A" t2
 let t3 = Exercise_2_3.insert 'e' tree
 printfn "%A" t3
+let t4 = Exercise_2_4.insert 'e' tree
+printfn "%A" t4
 
 let dtree = Exercise_2_5.complete 'x' 3 
 printfn "%A" dtree
