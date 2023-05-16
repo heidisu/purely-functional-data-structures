@@ -32,3 +32,10 @@ printfn "%A" t4
 
 let dtree = Exercise_2_5.complete 'x' 3 
 printfn "%A" dtree
+
+printfn "2.5 b"
+let balancedTree = Exercise_2_5.create 'x' 3 
+printfn "%A" balancedTree
+
+let balancedTree2 = Exercise_2_5.create 'x' 4 
+printfn "%A" balancedTree2
