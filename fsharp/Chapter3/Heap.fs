@@ -48,3 +48,16 @@ module Heap =
         function
         | E -> raise Empty
         | T (_, _, a, b) -> merge a b
+        
+    let rec exercise_3_2 x h =
+        match h with
+        | E -> T(1, x, E, E)
+        | T(_, y, a, b) ->
+            if x <= y then
+                makeT x E h
+            else
+                makeT y a (exercise_3_2 x b)
+
+    let fromList l =
+        List.fold (fun s e -> merge (T(1, e, E, E)) s) E l
+        
