@@ -8,7 +8,9 @@ let rec complete x d =
                 in T(subtree, x, subtree)
 
 let create2 x m =
-    T (complete x m, x, complete x (m + 1))
+    let vt = complete x m
+    let ht = T(vt, x, vt)
+    T (vt, x, ht)
 
 let rec create x m =
     match m with

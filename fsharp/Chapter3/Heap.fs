@@ -58,6 +58,29 @@ module Heap =
             else
                 makeT y a (exercise_3_2 x b)
 
+    let rec mergePairs l =
+        match l with
+        | [] -> E
+        | [ x ] -> x
+        | _ ->
+            let newList =
+                l
+                |> List.chunkBySize 2
+                |> List.map (fun l ->
+                    match l with
+                    | [x] -> x
+                    | [x; y] -> merge x y
+                    | _ -> failwith "Should not happen"
+                    )
+            mergePairs newList
+        
+        
     let fromList l =
-        List.fold (fun s e -> merge (T(1, e, E, E)) s) E l
+        // List.fold (fun s e -> merge (T(1, e, E, E)) s) E l
+        (* l
+        |> List.map (fun x -> T(1, x, E, E))
+        |> List.fold merge E *)
+        l
+        |> List.map (fun x -> T(1, x, E, E))
+        |> mergePairs
         
