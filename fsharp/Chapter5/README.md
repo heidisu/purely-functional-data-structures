@@ -1,5 +1,42 @@
 # Chapter 5
 
-## Amortized utregning
+a = t_1 + phi_d - phi_d-1
 
-### Snoc
+phi = abs(#f - #r)
+
+
+hvis lista har n > 2 element, og #f = 1
+#f = 1 #r n-1 -> phi_d-1 = n - 2
+
+
+#f = (n-1)/2 #r = (n-1)/2 => phi_d = 0
+
+t_i = n
+
+a = n + 0 - (n - 2) = 2 = O(1)
+
+## oppgave 5.2
+
+The amortized cost of any operation is defined to
+be the actual cost of the operation plus the credits allocated by the operation
+minus the credits spent by the operation, i.e.,
+a_i = t_i + c_i - c'_i
+
+Hvert tre i heapen allokerer 1 kreditt
+bruker når man linker trær
+
+k + 1 steps, k links, hver link bruker k, den ene operasjonen som ikke linker allokerer 1
+
+(k + 1) + c_i - k
+
+a = (K + 1) + 1 - k = 2e
+
+## Oppgave 5.3
+
+phi = antall trær i heapen
+
+hvis merge tar k links så er 
+phi_in = #ts1 + #ts2, 
+phi_out = #ts1 + #ts2 - k
+t = actual steps = 
+

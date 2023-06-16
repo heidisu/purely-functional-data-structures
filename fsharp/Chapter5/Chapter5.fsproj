@@ -9,6 +9,10 @@
     <ItemGroup>
         <Compile Include="Queue.fsi" />
         <Compile Include="Queue.fs" />
+        <Compile Include="Deque.fsi" />
+        <Compile Include="Deque.fs" />
+        <Compile Include="BinomialHeap.fs" />
+        <Compile Include="SplayHeap.fs" />
         <Compile Include="Program.fs" />
         <Content Include="README.md" />
     </ItemGroup>
