@@ -33,10 +33,20 @@ a = (K + 1) + 1 - k = 2e
 
 ## Oppgave 5.3
 
+A binomial tree of order(= rank) k has 2^{k} nodes  => n noder => log(n) rank
+
 phi = antall trær i heapen
 
 hvis merge tar k links så er 
 phi_in = #ts1 + #ts2, 
 phi_out = #ts1 + #ts2 - k
-t = actual steps = 
+t = actual steps + (#ts1 + #ts2 - k) - (#ts1 + #ts2) = actual steps - k
+
+actual steps av merge er r + k? 
+
+deleteMin
+
+removeMinTree = t steps
+deleteMin = t + r + k + () - t = 
+
 
