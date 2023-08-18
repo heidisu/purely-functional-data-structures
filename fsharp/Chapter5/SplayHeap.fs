@@ -22,15 +22,15 @@ let rec bigger pivot = function
 let rec smaller pivot = function
     | E -> E
     | T (a, x, b) ->
-        if x > pivot then smaller pivot a
+        if x >= pivot then smaller pivot a
         else
             match b with
             | E -> T (a, x, E)
             | T (a1, y, a2) ->
-                if y > pivot then T (a, x, smaller pivot a1)
+                if y >= pivot then T (a, x, smaller pivot a1)
                 else T (T (a, x, a1), y, smaller pivot a2)
     
-let insert x t = T (smaller x t, x, bigger x t)
+// let insert x t = T (smaller x t, x, bigger x t)
 
 let rec partition pivot = function
     | E -> (E, E)
@@ -56,6 +56,10 @@ let rec partition pivot = function
                     let small, big = partition pivot a1
                     (small, T(big, y, T(a2, x, b)))
 
+let insert x t =
+    let a, b = partition x t
+    T (a, x, b)
+
 let rec findMin = function
     | E -> failwith "Can't find min of empty tree"
     | T(E, x, b) -> x
@@ -66,3 +70,32 @@ let rec deleteMin = function
     | T(E, x, b) -> b
     | T(T(E, x, b), y, c) -> T(b, y, c)
     | T(T(a, x, b), y, c) -> T(deleteMin a, x, T(b, y, c))
+    
+// Oppgave 5.7
+let rec toList (tree: 'a Elem Tree) =
+    printfn $"toList {tree}"
+    match tree with
+    | E -> List.empty
+    | T (E, x, E) -> [x]
+    | T (E, x, b) -> x :: toList b
+    | T (a, x, E) -> toList a @ [x]
+    | T (a, x, b) -> toList a @ [x] @ toList b
+
+let sorted (lst: 'a list) =
+    lst
+    |> List.fold (fun t elem -> insert elem t) E
+    |> toList
+
+// Sorted med sortert liste inn
+// [1; 2; 3; 4]
+// insert 1 E - partition 1 E - (E,  1,  E)
+// insert 2 (E, 1, E) -> 1 <= 2 og  b = E -> partion = ((E, 1, E), 2, E)
+// insert 3 ((E, 1, E), 2, E) -> 2 <= 3 og b = E -> partion = (((E, 1, E), 2, E), 3, E)
+// etc...
+
+// Sorted med sortert liste inn
+// [4; 3; 2; 1]
+// insert 4 E - partition 4 E - (E,  4,  E)
+// insert 3 (E, 4, E) -> 4 > 3 og  a = E -> partion = (E, 3, (E, 4, E))
+// insert 2 (E, 3, (E, 4, E)) -> 3 > 2 og a = E -> partion = (E, 2, (E, 3, (E, 4, E)))
+// etc...

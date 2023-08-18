@@ -29,3 +29,11 @@ let sh =
     |> SplayHeap.insert 0
 
 printfn $"%A{sh}"
+
+printfn $"%A{SplayHeap.toList sh}"
+
+let sortList = [6; 4; 7; 2; 9; 10; 0] |> SplayHeap.sorted
+printfn $"%A{sortList}"
+
+let sortSortedInc = [1; 2; 3; 4] |> SplayHeap.sorted
+let sortSortedDesc = [4; 3; 2; 1] |> SplayHeap.sorted

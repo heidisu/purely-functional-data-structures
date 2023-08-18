@@ -40,7 +40,8 @@ phi = antall trær i heapen
 hvis merge tar k links så er 
 phi_in = #ts1 + #ts2, 
 phi_out = #ts1 + #ts2 - k
-t = actual steps + (#ts1 + #ts2 - k) - (#ts1 + #ts2) = actual steps - k
+a = actual step + sum phi d_i+1 - sum phi d_i
+a = actual steps + (#ts1 + #ts2 - k) - (#ts1 + #ts2) = actual steps - k
 
 actual steps av merge er r + k? 
 
