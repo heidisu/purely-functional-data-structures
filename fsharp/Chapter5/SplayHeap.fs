@@ -81,6 +81,13 @@ let rec toList (tree: 'a Elem Tree) =
     | T (a, x, E) -> toList a @ [x]
     | T (a, x, b) -> toList a @ [x] @ toList b
 
+
+// let rec toList (acc: 'a Elem list) (tree: 'a Elem Tree) =
+//     printfn $"toList {tree}"
+//     match tree with
+//     | E -> acc
+//     | T (a, x, b) -> toList (x :: toList acc a) b
+
 let sorted (lst: 'a list) =
     lst
     |> List.fold (fun t elem -> insert elem t) E
@@ -99,3 +106,7 @@ let sorted (lst: 'a list) =
 // insert 3 (E, 4, E) -> 4 > 3 og  a = E -> partion = (E, 3, (E, 4, E))
 // insert 2 (E, 3, (E, 4, E)) -> 3 > 2 og a = E -> partion = (E, 2, (E, 3, (E, 4, E)))
 // etc...
+
+// fold insert -> O(n)
+// toList -> O(n)
+// = O(2n) = O(n)
