@@ -37,3 +37,8 @@ printfn $"%A{sortList}"
 
 let sortSortedInc = [1; 2; 3; 4] |> SplayHeap.sorted
 let sortSortedDesc = [4; 3; 2; 1] |> SplayHeap.sorted
+
+let pheap = PairingHeap.insert 7 (PairingHeap.insert 3 (PairingHeap.insert 5 (PairingHeap.insert 1 (PairingHeap.insert 2 PairingHeap.empty))))
+
+printfn $"%A{pheap}"
+

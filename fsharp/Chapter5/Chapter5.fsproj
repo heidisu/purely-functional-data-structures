@@ -13,6 +13,7 @@
         <Compile Include="Deque.fs" />
         <Compile Include="BinomialHeap.fs" />
         <Compile Include="SplayHeap.fs" />
+        <Compile Include="PairingHeap.fs" />
         <Compile Include="Program.fs" />
         <Content Include="README.md" />
     </ItemGroup>
