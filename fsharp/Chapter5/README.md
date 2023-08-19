@@ -51,3 +51,26 @@ removeMinTree = t steps
 deleteMin = t + r + k + () - t = 
 
 
+## Cost of insert
+
+A(t) = T(t) + phi(t) - phi(t_(i-1))
+
+Bruker at T(t) = T_part(t) + 1, t = T(a, x, b), t_(i-1) = t i partition regnestykket
+
+A(t) = T_part(t) + 1 + phi(a) + phi(x) + phi(b) - phi(t)
+
+Bruker def av A(t): T_part(t) = A_part(t) - phi(a) - phi(b) + phi(t)
+
+A(t) = A_part(t) - phi(a) - phi(b) + phi(t) + 1 + phi(a) + phi(x) + phi(b) - phi(t)
+
+trekker sammen
+
+A(t) = A_part(t) + 1 + phi(x)
+
+Bruker teorem 5.2 og at phi(x) = log(#x) = log(#t + 1)
+
+A(t) <= 1 + 2(log#t) + 1 + log(#t + 1) 
+
+omtrent lik 2 + 3 log(#t)
+
+=> insert amoritserte kost = O(log n)
