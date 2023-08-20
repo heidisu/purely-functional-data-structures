@@ -42,3 +42,9 @@ let pheap = PairingHeap.insert 7 (PairingHeap.insert 3 (PairingHeap.insert 5 (Pa
 
 printfn $"%A{pheap}"
 
+
+let pheap' = PairingHeap.deleteMin pheap
+printfn $"%A{pheap'}"
+
+let binTree = PairingHeap.toBinary pheap
+printfn $"%A{binTree}"
