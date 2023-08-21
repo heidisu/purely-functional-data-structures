@@ -32,13 +32,6 @@ let deleteMin = function
     | E -> raise <| failwith "Cannot delete min of emtpy"
     | T (x, hs) -> mergePairs hs
 
-(*
-          fun aux (T (x, []), []) = T' (x, E', E')
-        | aux (T (x, []), h2::hs2) = T' (x, E', aux (h2, hs2))
-        | aux (T (x, h1::hs1), []) = T' (x, aux (h1, hs2), E')
-        | aux (T (x, h1::hs1), h2::hs2) = T' (x, aux (h1, hs1), aux (h2, hs2))
-*)
-
 type 'a BinTree = E' | T' of 'a Elem * 'a BinTree * 'a BinTree
 
 let rec toBinaryAcc ph lst = 
@@ -68,4 +61,24 @@ let merge' t1 t2 =
     match t1, t2 with
     | t, E' -> t
     | E', t -> t
-    
+    | T' (x, a1, E'), T' (y, a2, E') ->
+        if x <= y then T' (x, T' (y, a2, a1), E')
+        else T' (y, T' (x, a1, a2), E')
+    | _ -> raise <| failwith "not possile"
+  
+  
+let  insert' x h = merge' (T' (x, E', E')) h
+
+let rec mergePairs' = function
+| E' -> E'
+| T' (x, a, E')  as t ->  t
+| T' (x, a, T' (y, b, c)) ->
+    merge' (merge' (T' (x, a, E')) (T' (y, b, E'))) (mergePairs' c)
+
+let findMin' = function
+    | E' -> raise <| failwith "cannot find min of empty"
+    | T' (x, a, E') -> x
+
+let deleteMin' E' = function
+    | E' -> raise <| failwith "cannot delete min of empty"
+    | T' (x, a, E') -> mergePairs' a

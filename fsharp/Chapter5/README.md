@@ -74,3 +74,10 @@ A(t) <= 1 + 2(log#t) + 1 + log(#t + 1)
 omtrent lik 2 + 3 log(#t)
 
 => insert amoritserte kost = O(log n)
+
+
+# 5.9 
+
+
+
+
