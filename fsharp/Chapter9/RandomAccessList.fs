@@ -63,16 +63,59 @@ let rec update i y t =
         else One t :: update (i - size t) y ts
 
 // Oppgave 9.1
+let rec dropTree n t xs = 
+    match t with
+    | Leaf x -> xs
+    | Node (i, t1, t2) -> 
+        if n <= i / 2 then dropTree n t1 (One t2::xs) // splitter i venstre tre, høyre tre er komplett av rank 2^(i -1)
+        else 
+            // splitter videre på høyre side, t1 forsvinner så erstatter med Zero
+            match xs with
+            | [] ->  dropTree (n - i / 2) t2 []
+            | _ -> dropTree (n - i / 2) t2 (Zero :: xs)
 
-(*
+
 let rec drop n l =
     match l with
     | Zero :: xs -> drop n xs
+    | [ One t] -> dropTree n t []
     | One t :: xs ->
-        match t with
-        | Leaf x -> drop (n - 1) xs
-        | Node (i, t1, t2) ->
-            if i < n then drop (n - i) xs
-            else if i = n then xs
-            else
- *)
+        let i = size t
+        if n > i
+        then drop (n - i) xs
+        else dropTree i t (Zero :: xs) 
+        // hvis lista ikke er tom må nåværende plass erstattes med Zero
+        // dropTree fører til at det legges til trær av lavere rank 
+
+(*
+oppgave 2.5
+
+let rec complete x d = 
+    match d with
+    | 0 -> E
+    | n -> let subtree = complete x (n - 1)
+                in T(subtree, x, subtree)
+
+let create2 x m =
+    let vt = complete x m
+    let ht = T(vt, x, vt)
+    T (vt, x, ht)
+
+let rec create x m =
+    match m with
+    | 0 -> E
+    | m ->
+        let half = m / 2
+        if m % 2 = 0 then
+            let t = complete x half in T(t, x, t)
+        else create2 x half
+
+*)
+let create n a = 
+    let rec aux n t = 
+        match n with
+        | 0 -> []
+        | _  ->
+            if n % 2 = 1 then One t:: (aux (n / 2) (Node (2 * size t, t, t)))
+            else Zero :: (aux (n / 2) (Node (2 * size t, t, t)))
+    aux n (Leaf a)

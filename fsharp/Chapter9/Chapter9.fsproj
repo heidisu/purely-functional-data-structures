@@ -9,6 +9,7 @@
         <Compile Include="Dense.fs" />
         <Compile Include="SparseByWeight.fs" />
         <Compile Include="RandomAccessList.fs" />
+        <Compile Include="SparseRandomAccessList.fs" />
         <Compile Include="ListAndNumbers.fs" />
         <Compile Include="Program.fs"/>
     </ItemGroup>
