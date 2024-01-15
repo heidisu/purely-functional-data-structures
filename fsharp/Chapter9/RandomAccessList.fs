@@ -6,7 +6,7 @@ type 'a RList = 'a Digit list
 
 let size t =
     match t with
-    | Leaf x -> 1
+    | Leaf _ -> 1
     | Node (w, _, _) -> w
 
 let link t1 t2 = Node (size t1 + size t2, t1, t2)

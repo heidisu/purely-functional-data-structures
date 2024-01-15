@@ -37,7 +37,17 @@ let ral2 = cons 4 ral1
 printfn "%A" ral1
 printfn "%A" ral2
 
-// tail [Zero; Zero; One (Node (4, Node (2, Leaf 4, Leaf 1), Node (2, Leaf 2, Leaf 3)))]
-// 
+(*
+tail [Zero; Zero; One (Node (4, Node (2, Leaf 4, Leaf 1), Node (2, Leaf 2, Leaf 3)))]
+    unconsTree (Zero :: ts)
+        unconsTree ts = unconsTree (Zero :: ts')
+            unconsTree [One (Node (4, Node (2, Leaf 4, Leaf 1), Node (2, Leaf 2, Leaf 3)))]
+            (Node (4, Node (2, Leaf 4, Leaf 1), Node (2, Leaf 2, Leaf 3)), [])
+        (Node (2, Leaf 4, Leaf 1), [One (Node (2, Leaf 2, Leaf 3))])
+    (Leaf 4, [One (Leaf 1),  One (Node (2, Leaf 2, Leaf 3))])
+[One (Leaf 1),  One (Node (2, Leaf 2, Leaf 3))]
+*)
 printfn "%A" (tail ral2)
+
+printfn "Lookup: %A" (lookup 3 ral2)
 
