@@ -64,21 +64,21 @@ let merge' t1 t2 =
     | T' (x, a1, E'), T' (y, a2, E') ->
         if x <= y then T' (x, T' (y, a2, a1), E')
         else T' (y, T' (x, a1, a2), E')
-    | _ -> raise <| failwith "not possile"
+    | _ -> raise <| failwith "not possible"
   
   
 let  insert' x h = merge' (T' (x, E', E')) h
 
 let rec mergePairs' = function
 | E' -> E'
-| T' (x, a, E')  as t ->  t
+| T' (_, _, E')  as t ->  t
 | T' (x, a, T' (y, b, c)) ->
     merge' (merge' (T' (x, a, E')) (T' (y, b, E'))) (mergePairs' c)
 
 let findMin' = function
     | E' -> raise <| failwith "cannot find min of empty"
-    | T' (x, a, E') -> x
+    | T' (x, _, E') -> x
 
 let deleteMin' E' = function
     | E' -> raise <| failwith "cannot delete min of empty"
-    | T' (x, a, E') -> mergePairs' a
+    | T' (_, a, E') -> mergePairs' a

@@ -82,11 +82,11 @@ let rec toList (tree: 'a Elem Tree) =
     | T (a, x, b) -> toList a @ [x] @ toList b
 
 
-// let rec toList (acc: 'a Elem list) (tree: 'a Elem Tree) =
-//     printfn $"toList {tree}"
-//     match tree with
-//     | E -> acc
-//     | T (a, x, b) -> toList (x :: toList acc a) b
+//let rec toList' (acc: 'a Elem list) (tree: 'a Elem Tree) =
+  //   printfn $"toList {tree}"
+   //  match tree with
+   //  | E -> acc
+   //  | T (a, x, b) -> toList (x :: toList acc a) b
 
 let sorted (lst: 'a list) =
     lst

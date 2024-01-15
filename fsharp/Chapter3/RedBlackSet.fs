@@ -14,9 +14,9 @@ let rec membero  = function
         else true
         
 let balance = function
-    | (B,T (R,T (R,a,x,b),y,c),z,d) -> T (R,T (B,a,x,fc),y,T (B,c,z,d))
-    | (B,T (R,a,x,T (R,b,y,c)),z,d) -> T (R,T (B,a,x,fc),y,T (B,c,z,c))
-    | (B,a,x,T (R,T (R,b,y,c),z,d)) -> T (R,T (B,a,x,fc),y,T (B,c,z,d))
+    | (B,T (R,T (R,a,x,b),y,c),z,d) -> T (R,T (B,a,x,b),y,T (B,c,z,d))
+    | (B,T (R,a,x,T (R,b,y,c)),z,d) -> T (R,T (B,a,x,b),y,T (B,c,z,d))
+    | (B,a,x,T (R,T (R,b,y,c),z,d)) -> T (R,T (B,a,x,b),y,T (B,c,z,d))
     | (B,a,x,T (R,b,y,T (R,c,z,d))) -> T (R,T (B,a,x,b),y,T (B,c,z,d))
     | body -> T body
 

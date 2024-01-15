@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Dense.fs" />
+        <Compile Include="SparseByWeight.fs" />
+        <Compile Include="RandomAccessList.fs" />
+        <Compile Include="ListAndNumbers.fs" />
+        <Compile Include="Program.fs"/>
+    </ItemGroup>
+</Project>

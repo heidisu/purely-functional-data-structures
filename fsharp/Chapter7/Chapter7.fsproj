@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="RealTimeQueue.fs" />
+        <Compile Include="ScheduledBinomialHeap.fs" />
+        <Compile Include="ScheduledBottomUpMergeSort.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FSharpx.Collections" Version="3.1.0" />
+    </ItemGroup>
+
+</Project>
