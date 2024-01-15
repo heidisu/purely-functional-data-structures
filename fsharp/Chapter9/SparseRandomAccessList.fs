@@ -13,13 +13,18 @@ let link t1 t2 = SNode (size t1 + size t2, t1, t2)
 let rec consTree t ts =
     match ts with
     | [] -> [t]
-    | t :: ts -> One t :: ts
+    | t' :: ts' -> if size t < size t' then t :: ts else consTree (link t t') ts'
     
-let cons x ts = consTree (Leaf x) ts
+let cons x ts = consTree (SLeaf x) ts
 
 let rec unconsTree l =
     match l with
-    | [ One t ] -> (t, [])
+    | [] -> failwith "invalid operation"
+    | t :: ts -> 
+        match t with
+        | SLeaf x -> (x, ts)
+        | SNode (_, t1, t2) -> 
+            unconsTree 
     | One t :: ts -> (t, Zero :: ts)
     | Zero :: ts ->
             let (Node (_, t1, t2), ts') = unconsTree ts
