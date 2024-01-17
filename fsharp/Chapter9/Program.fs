@@ -51,6 +51,6 @@ printfn "%A" (tail ral2)
 
 printfn "Lookup: %A" (lookup 3 ral2)
 
-printfn "drop: %A" (drop 2 ral2)
+printfn "drop: %A" (drop 1 ral2)
 
 printfn "oppg 9.2 %A" (create 5 3)
