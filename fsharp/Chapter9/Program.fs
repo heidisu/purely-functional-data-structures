@@ -2,6 +2,7 @@
 open Chapter9.ListAndNumbers
 open Chapter9.SparseByWeight
 open Chapter9.RandomAccessList
+open Chapter9.ZerolessRandomAccessList
 
 let liste = Cons (3, Cons (2, Cons (1, Nil)))
 let natThree = Succ(Succ(Succ ListAndNumbers.Zero))
@@ -32,8 +33,8 @@ printfn "%A" (inc seven)
 printfn "%A" ten
 *)
 
-let ral1 = cons 1 (cons 2 (cons 3 []))
-let ral2 = cons 4 ral1
+let ral1 = RandomAccessList.cons 1 (RandomAccessList.cons 2 (RandomAccessList.cons 3 []))
+let ral2 = RandomAccessList.cons 4 ral1
 printfn "%A" ral1
 printfn "%A" ral2
 
@@ -47,10 +48,19 @@ tail [Zero; Zero; One (Node (4, Node (2, Leaf 4, Leaf 1), Node (2, Leaf 2, Leaf 
     (Leaf 4, [One (Leaf 1),  One (Node (2, Leaf 2, Leaf 3))])
 [One (Leaf 1),  One (Node (2, Leaf 2, Leaf 3))]
 *)
-printfn "%A" (tail ral2)
+printfn "%A" (RandomAccessList.tail ral2)
 
-printfn "Lookup: %A" (lookup 3 ral2)
+printfn "Lookup: %A" (RandomAccessList.lookup 3 ral2)
 
-printfn "drop: %A" (drop 1 ral2)
+printfn "drop: %A" (RandomAccessList.drop 1 ral2)
 
 printfn "oppg 9.2 %A" (create 5 3)
+
+let zthree = ZerolessRandomAccessList.inc (inc (inc []))
+let zfour = ZerolessRandomAccessList.inc (inc (inc (inc [])))
+let ztwo = ZerolessRandomAccessList.inc (inc [])
+
+printfn "%A" zthree
+printfn "%A" zfour
+printfn "%A" (add zthree zfour)
+printfn "%A" (add ztwo ztwo)
