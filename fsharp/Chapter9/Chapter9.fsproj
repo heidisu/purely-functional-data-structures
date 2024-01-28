@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,6 +12,7 @@
         <Compile Include="SparseRandomAccessList.fs" />
         <Compile Include="ZerolessRandomAccessList.fs" />
         <Compile Include="ListAndNumbers.fs" />
+        <Compile Include="SegmentedBinaryNumbers.fs"/>
         <Compile Include="Program.fs"/>
     </ItemGroup>
 </Project>

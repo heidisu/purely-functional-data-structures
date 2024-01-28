@@ -3,6 +3,7 @@ open Chapter9.ListAndNumbers
 open Chapter9.SparseByWeight
 open Chapter9.RandomAccessList
 open Chapter9.ZerolessRandomAccessList
+open Chapter9.SegmentedBinaryNumbers
 
 let liste = Cons (3, Cons (2, Cons (1, Nil)))
 let natThree = Succ(Succ(Succ ListAndNumbers.Zero))
@@ -19,11 +20,11 @@ printfn "%A" five
 printfn "%A" six
 printfn "%A" sum
 *)
-let four = SparseByWeight.zero |> inc |> inc |> inc |> inc
-let three = four |> dec
-let seven = add four three
+let four = SparseByWeight.zero |> SparseByWeight.inc |> SparseByWeight.inc |> SparseByWeight.inc |> SparseByWeight.inc
+let three = four |> SparseByWeight.dec
+let seven = SparseByWeight.add four three
 
-let ten = add seven three
+let ten = SparseByWeight.add seven three
 
 (*
 printfn "%A" four
@@ -56,11 +57,19 @@ printfn "drop: %A" (RandomAccessList.drop 1 ral2)
 
 printfn "oppg 9.2 %A" (create 5 3)
 
-let zthree = ZerolessRandomAccessList.inc (inc (inc []))
-let zfour = ZerolessRandomAccessList.inc (inc (inc (inc [])))
-let ztwo = ZerolessRandomAccessList.inc (inc [])
+let zthree = ZerolessRandomAccessList.inc (ZerolessRandomAccessList.inc (ZerolessRandomAccessList.inc []))
+let zfour = ZerolessRandomAccessList.inc (ZerolessRandomAccessList.inc (ZerolessRandomAccessList.inc (ZerolessRandomAccessList.inc [])))
+let ztwo = ZerolessRandomAccessList.inc (ZerolessRandomAccessList.inc [])
 
 printfn "%A" zthree
 printfn "%A" zfour
-printfn "%A" (add zthree zfour)
-printfn "%A" (add ztwo ztwo)
+printfn "%A" (ZerolessRandomAccessList.add zthree zfour)
+printfn "%A" (ZerolessRandomAccessList.add ztwo ztwo)
+
+printfn "%A" ([] |> SegmentedBinaryNumbers.inc |> SegmentedBinaryNumbers.inc |> SegmentedBinaryNumbers.inc |> SegmentedBinaryNumbers.inc)
+
+(*
+type 'a Tree = Node of 'a  * Tree list
+type Digit = Zero | Ones of Tree list | Two of Tree x Tree
+type Heap = Digit list
+*)
