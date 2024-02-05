@@ -4,6 +4,7 @@ open Chapter9.SparseByWeight
 open Chapter9.RandomAccessList
 open Chapter9.ZerolessRandomAccessList
 open Chapter9.SegmentedBinaryNumbers
+open Chapter9.SkewBinaryNumbers
 
 let liste = Cons (3, Cons (2, Cons (1, Nil)))
 let natThree = Succ(Succ(Succ ListAndNumbers.Zero))
@@ -73,3 +74,12 @@ type 'a Tree = Node of 'a  * Tree list
 type Digit = Zero | Ones of Tree list | Two of Tree x Tree
 type Heap = Digit list
 *)
+
+let incThree  = SkewBinaryNumbers.inc >> SkewBinaryNumbers.inc >> SkewBinaryNumbers.inc
+let incFour = SkewBinaryNumbers.inc >> incThree
+
+printfn "Skew 3: %A" (incThree [])
+printfn "Skew 4: %A" (incFour [])
+printfn "Skew 7: %A" ((incThree >> incFour) [])
+printfn "Skew 8: %A" ((incFour >> incFour) [])
+printfn "Skew 12: %A" ((incFour >> incFour >> incFour) [])

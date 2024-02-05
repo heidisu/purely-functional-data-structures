@@ -13,6 +13,7 @@
         <Compile Include="ZerolessRandomAccessList.fs" />
         <Compile Include="ListAndNumbers.fs" />
         <Compile Include="SegmentedBinaryNumbers.fs"/>
+        <Compile Include="SkewBinaryNumbers.fs"/>
         <Compile Include="Program.fs"/>
     </ItemGroup>
 </Project>
