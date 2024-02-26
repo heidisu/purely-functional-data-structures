@@ -67,6 +67,14 @@ printfn "%A" zfour
 printfn "%A" (ZerolessRandomAccessList.add zthree zfour)
 printfn "%A" (ZerolessRandomAccessList.add ztwo ztwo)
 
+let zral1 = cons 1 (cons 2 (cons 3 []))
+let zral2 = cons 4 zral1
+printfn "%A" <| cons 2 (cons 3 [])
+printfn "%A" zral1
+printfn "%A" zral2
+
+printfn "Lookup: %A" (lookup 2 zral2)
+printfn "Update: %A" (update 2 10 zral2)
 printfn "%A" ([] |> SegmentedBinaryNumbers.inc |> SegmentedBinaryNumbers.inc |> SegmentedBinaryNumbers.inc |> SegmentedBinaryNumbers.inc)
 
 (*
