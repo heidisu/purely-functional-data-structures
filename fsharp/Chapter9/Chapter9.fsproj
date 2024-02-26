@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,6 +14,12 @@
         <Compile Include="ListAndNumbers.fs" />
         <Compile Include="SegmentedBinaryNumbers.fs"/>
         <Compile Include="SkewBinaryNumbers.fs"/>
+        <Compile Include="SkewBinaryNumbers.fs"/>
+        <Compile Include="ZerolessRedundantRandomAccessList.fs" />
         <Compile Include="Program.fs"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FSharpx.Collections" Version="3.1.0" />
     </ItemGroup>
 </Project>

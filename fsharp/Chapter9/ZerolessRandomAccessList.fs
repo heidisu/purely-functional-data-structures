@@ -12,7 +12,7 @@ let rec inc n =
 let rec dec n =
     match n with
     | [ZOne] -> []
-    | [ZTwo] -> [ZOne]
+    //| [ZTwo] -> [ZOne]
     | ZOne :: xs -> ZTwo :: dec xs
     | ZTwo :: xs -> ZOne :: xs
 
@@ -22,7 +22,7 @@ let rec add m n =
     | m, [] -> m
     | ZOne :: xs, ZOne :: ys -> ZTwo :: add xs ys
     | ZTwo :: xs, ZTwo :: ys -> ZTwo :: inc (add xs ys)
-    | x :: xs, y :: ys -> ZOne :: inc (add xs ys)
+    | x :: xs, y :: ys -> ZOne :: inc (add xs ys) // One , Two eller Two, One = 3
 
 type 'a ZTree = ZLeaf of 'a | ZNode of int * 'a ZTree * 'a ZTree
 type 'a ZLDigit = ZLOne of 'a ZTree | ZLTwo of 'a ZTree * 'a ZTree
@@ -60,31 +60,35 @@ let tail ts =
     let (_, ts') = unconsTree ts
     ts'
 
-(*
 let rec lookupTree t =
     match t with
-    | (0, Leaf x) -> x
-    | (i, Node(w, t1, t2)) ->
+    | (0, ZLeaf x) -> x
+    | (i, ZNode(w, t1, t2)) ->
         if i < w / 2 then lookupTree (i, t1)
         else lookupTree (i - (w / 2), t2)
 
 let rec lookup i t =
     match (i, t) with
-    | (i,  Zero :: ts) -> lookup i ts
-    | (i, One t :: ts) ->
+    | (i,  ZLTwo (t1, t2) :: ts) ->
+        if i < size t1 then lookupTree (i, t1)
+        else if i < size t1 + size t2 then lookupTree (i - size t1, t2)
+        else lookup (i - size t1 - size t2) ts 
+    | (i, ZLOne t :: ts) ->
         if i < size t then lookupTree (i, t) else lookup (i - size t) ts
 
 let rec updateTree i y t =
     match (i, t) with
-    | (0, Leaf x) -> Leaf y
-    | (i, Node(w, t1, t2)) ->
-        if i < w / 2 then Node (w, updateTree i y t1, t2)
-        else Node (w, t1, updateTree (i - w / 2) y t2)
+    | (0, ZLeaf x) -> ZLeaf y
+    | (i, ZNode(w, t1, t2)) ->
+        if i < w / 2 then ZNode (w, updateTree i y t1, t2)
+        else ZNode (w, t1, updateTree (i - w / 2) y t2)
 
 let rec update i y t =
     match t with
-    | Zero :: ts -> Zero :: update i y ts
-    | One t :: ts ->
-        if i < size t then One (updateTree i y t) :: ts
-        else One t :: update (i - size t) y ts
-        *)
+    | ZLTwo (t1, t2) :: ts ->
+        if i < size t1 then ZLTwo ((updateTree i y t1), t2) :: ts 
+        else if i < size t1 + size t2 then ZLTwo(t1, updateTree (i - size t1) y t2) :: ts
+        else ZLTwo (t1, t2) :: update (i - size t1 - size t2) y ts 
+    | ZLOne t :: ts ->
+        if i < size t then ZLOne (updateTree i y t) :: ts
+        else ZLOne t :: update (i - size t) y ts
