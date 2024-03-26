@@ -34,3 +34,10 @@ let tail c =
     match c with
     | E -> failwith "Illegal operation"
     | C(x, q) -> if LazyList.isEmpty q then E else linkAll q
+
+// oppgave 10.6
+let rec flatten (cl: 'a Cat list) = 
+    match cl with
+    | [] -> E
+    | E :: xs -> flatten xs
+    | x :: xs -> x ++ flatten xs // O(1) hvis lazy
