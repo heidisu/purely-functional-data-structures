@@ -6,8 +6,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Program.fs"/>
         <Compile Include="PolymorphicTest.fs" />
+        <Compile Include="CatenableList.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FSharpx.Collections" Version="3.1.0" />
     </ItemGroup>
 
 </Project>
