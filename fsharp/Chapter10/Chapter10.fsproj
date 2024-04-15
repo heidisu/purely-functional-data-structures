@@ -10,6 +10,7 @@
         <Compile Include="CatenableList.fs" />
         <Compile Include="LazyBinomialHeap.fs" />
         <Compile Include="BootstrappedHeap.fs" />
+        <Compile Include="Trie.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
